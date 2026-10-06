@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0b0b">
+  <meta name="description" content="Rehan — Videographer & Video Editor creating cinematic reels, promotional videos and social-first visual content.">
+  <title>Rehan — Videographer & Video Editor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0a0a0a;--surface:#111;--surface-2:#171717;--text:#f4f1eb;--muted:#aaa49a;
+      --line:rgba(255,255,255,.11);--accent:#d7ff55;--max:1180px;--radius:24px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);line-height:1.5;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.035;z-index:20;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.9'/%3E%3C/svg%3E")}
+    a{color:inherit;text-decoration:none}
+    img,video{display:block;max-width:100%}
+    button,a{font:inherit}
+    .container{width:min(calc(100% - 48px),var(--max));margin:auto}
+    .eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:18px 24px;background:linear-gradient(to bottom,rgba(10,10,10,.92),transparent);transition:.3s}
+    .nav.scrolled{background:rgba(10,10,10,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    .nav-inner{width:min(100%,var(--max));margin:auto;display:flex;align-items:center;justify-content:space-between}
+    .logo{font-family:Manrope;font-weight:800;font-size:20px;letter-spacing:-.07em}
+    .nav-links{display:flex;gap:8px;align-items:center}
+    .nav-links a{font-size:13px;color:#c9c5bd;padding:9px 13px;border-radius:999px;transition:.25s}
+    .nav-links a:hover{color:var(--text);background:rgba(255,255,255,.08)}
+    .nav-cta{background:var(--text)!important;color:#0a0a0a!important;font-weight:700}
+    .hero{min-height:100svh;display:flex;align-items:flex-end;padding:150px 0 76px;position:relative;overflow:hidden}
+    .hero:before{content:"";position:absolute;width:700px;height:700px;right:-260px;top:80px;background:radial-gradient(circle,rgba(215,255,85,.12),transparent 65%);filter:blur(20px)}
+    .hero-grid{display:grid;grid-template-columns:1fr 280px;gap:60px;align-items:end;position:relative}
+    .hero h1{font-family:Manrope;font-size:clamp(5rem,13vw,10.5rem);line-height:.78;letter-spacing:-.095em;margin:18px 0 28px}
+    .hero h1 span{color:var(--accent)}
+    .hero-copy{max-width:650px;color:#bcb7ae;font-size:clamp(16px,2vw,20px);line-height:1.65}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1px solid var(--line);border-radius:999px;padding:13px 19px;font-size:13px;font-weight:700;transition:transform .25s,background .25s,border-color .25s}
+    .btn:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.28)}
+    .btn-primary{background:var(--text);color:#0a0a0a;border-color:var(--text)}
+    .btn-accent{background:var(--accent);color:#0a0a0a;border-color:var(--accent)}
+    .hero-card{aspect-ratio:4/5;border:1px solid var(--line);border-radius:32px;background:linear-gradient(145deg,#202020,#0f0f0f);display:flex;align-items:flex-end;padding:18px;position:relative;overflow:hidden}
+    .hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%;filter:saturate(.92) contrast(1.03)}
+    .photo-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.62),transparent 48%)}
+    .card-label{position:absolute;left:18px;bottom:18px;background:rgba(10,10,10,.75);backdrop-filter:blur(10px);padding:9px 12px;border-radius:10px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#d5d0c8}
+    section{padding:110px 0;border-top:1px solid var(--line)}
+    .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:42px}
+    .section-title{font:700 clamp(42px,6vw,76px)/.95 Manrope;letter-spacing:-.07em}
+    .section-note{max-width:430px;color:var(--muted);font-size:15px}
+    .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px}
+    .about-copy{font-size:clamp(20px,2.7vw,30px);line-height:1.42;letter-spacing:-.025em;color:#ddd8d0}
+    .about-copy strong{color:var(--text)}
+    .about-small{margin-top:26px;color:var(--muted);font-size:15px;max-width:680px}
+    .work-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:18px}
+    .project{min-height:420px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--surface);position:relative;display:flex;align-items:flex-end}
+    .project.tall{min-height:620px}
+    .project-art{position:absolute;inset:0;overflow:hidden}
+    .project-art:before{content:"";position:absolute;inset:-30%;background:radial-gradient(circle at 30% 25%,rgba(215,255,85,.25),transparent 28%),radial-gradient(circle at 75% 75%,rgba(255,255,255,.12),transparent 30%),linear-gradient(135deg,#292929,#0c0c0c 70%);transform:rotate(-7deg) scale(1.2)}
+    .project:nth-child(2) .project-art:before{background:radial-gradient(circle at 70% 30%,rgba(255,180,90,.22),transparent 27%),radial-gradient(circle at 20% 80%,rgba(120,170,255,.14),transparent 32%),linear-gradient(135deg,#242424,#0b0b0b 75%)}
+    .project:nth-child(3) .project-art:before{background:radial-gradient(circle at 45% 40%,rgba(190,120,255,.22),transparent 27%),linear-gradient(135deg,#252525,#0a0a0a 75%)}
+    .project-content{position:relative;width:100%;padding:26px;background:linear-gradient(to top,rgba(0,0,0,.92),transparent);padding-top:90px}
+    .project-tag{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+    .project h3{font:700 28px/1 Manrope;letter-spacing:-.045em}
+    .project p{color:#aaa49a;font-size:13px;margin-top:9px;max-width:470px}
+    .project-arrow{position:absolute;right:22px;bottom:24px;width:42px;height:42px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center}
+    .services{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+    .service{padding:30px 22px 30px 0;border-bottom:1px solid var(--line)}
+    .service:not(:nth-child(3n+1)){padding-left:22px;border-left:1px solid var(--line)}
+    .service-num{color:var(--accent);font-size:11px;letter-spacing:.12em}
+    .service h3{font:700 25px/1.1 Manrope;letter-spacing:-.04em;margin:55px 0 12px}
+    .service p{color:var(--muted);font-size:14px;max-width:300px}
+    .process{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
+    .step{padding:25px 22px 10px 0;border-bottom:1px solid var(--line)}
+    .step:not(:first-child){padding-left:22px;border-left:1px solid var(--line)}
+    .step strong{font:700 18px Manrope}
+    .step p{margin-top:12px;color:var(--muted);font-size:13px}
+    .contact{padding:125px 0 100px;text-align:center}
+    .contact h2{font:800 clamp(60px,12vw,150px)/.8 Manrope;letter-spacing:-.095em;margin:18px 0 32px}
+    .contact h2 span{color:var(--accent)}
+    .contact p{color:var(--muted);max-width:520px;margin:0 auto 28px}
+    .contact-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+    footer{border-top:1px solid var(--line);padding:22px 0;color:#77736c;font-size:11px;text-transform:uppercase;letter-spacing:.12em}
+    .footer-inner{display:flex;justify-content:space-between;gap:20px}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:none}
+    .ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .ig-card{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--surface);min-width:0}
+    .ig-card-head{padding:18px 20px;display:flex;justify-content:space-between;gap:12px;align-items:center;border-bottom:1px solid var(--line)}
+    .ig-card-head strong{font:700 18px/1.1 Manrope;letter-spacing:-.035em}
+    .ig-card-head span{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+    .ig-embed{min-height:500px;display:flex;justify-content:center;background:#fff}
+    .ig-embed blockquote{margin:0!important;width:100%!important;min-width:0!important}
+    .ig-empty{min-height:500px;display:grid;place-items:center;padding:30px;text-align:center;color:var(--muted);font-size:13px}
+    .ig-empty code{display:block;margin-top:10px;color:var(--text);font-size:11px}
+    @media(max-width:850px){
+      .container{width:min(calc(100% - 34px),var(--max))}
+      .nav{padding:15px 17px}
+      .nav-links a:not(.nav-cta){display:none}
+      .hero{padding:130px 0 60px}
+      .hero-grid{grid-template-columns:1fr;gap:38px}
+      .hero-card{width:150px;aspect-ratio:1;margin-left:auto;border-radius:24px}
+      section{padding:80px 0}
+      .section-head{display:block;margin-bottom:30px}
+      .section-note{margin-top:15px}
+      .about-grid,.work-grid{grid-template-columns:1fr;gap:18px}
+      .ig-grid{grid-template-columns:1fr}
+      .project,.project.tall{min-height:390px}
+      .services{grid-template-columns:1fr}
+      .service,.service:not(:nth-child(3n+1)){padding:25px 0;border-left:0}
+      .service h3{margin-top:35px}
+      .process{grid-template-columns:1fr 1fr}
+      .step,.step:not(:first-child){padding:22px 14px 22px 0;border-left:0}
+      .step:nth-child(even){padding-left:14px;border-left:1px solid var(--line)}
+      .contact{padding:95px 0 75px}
+      .footer-inner{display:block}
+      .footer-inner span+span{display:block;margin-top:8px}
+    }
+    @keyframes heroIn{from{opacity:0;transform:translateY(34px) scale(.985)}to{opacity:1;transform:none}}
+    @keyframes floatCard{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-8px) rotate(.4deg)}}
+    @keyframes pulseAccent{0%,100%{box-shadow:0 0 0 0 rgba(215,255,85,0)}50%{box-shadow:0 0 0 8px rgba(215,255,85,.08)}}
+    .hero .reveal.visible{animation:heroIn .85s cubic-bezier(.2,.7,.2,1) both}
+    .hero .hero-card.visible{animation:heroIn .9s .12s cubic-bezier(.2,.7,.2,1) both,floatCard 5s 1s ease-in-out infinite}
+    .btn{position:relative;overflow:hidden}
+    .btn:after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 25%,rgba(255,255,255,.24) 50%,transparent 75%);transform:translateX(-130%);transition:transform .65s ease}
+    .btn:hover:after,.btn:focus-visible:after{transform:translateX(130%)}
+    .btn-accent{animation:pulseAccent 3s ease-in-out infinite}
+    .project,.ig-card,.service,.step{transition:transform .35s ease,border-color .35s ease,background .35s ease}
+    .project:hover,.ig-card:hover{transform:translateY(-6px);border-color:rgba(215,255,85,.25)}
+    .service:hover,.step:hover{transform:translateY(-4px)}
+    .project-art:before{transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+    .project:hover .project-art:before{transform:rotate(-4deg) scale(1.28)}
+    .service h3,.project h3{transition:color .3s ease}
+    .service:hover h3,.project:hover h3{color:var(--accent)}
+    .nav-cta{transition:transform .25s ease,box-shadow .25s ease!important}
+    .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.22)}
+    .floating-wa{position:fixed;right:22px;bottom:22px;z-index:45;background:#25d366;color:#07120a;border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:12px 17px;font-size:12px;font-weight:800;box-shadow:0 10px 30px rgba(0,0,0,.3);transition:transform .25s ease,box-shadow .25s ease}
+    .floating-wa:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 16px 34px rgba(0,0,0,.4)}
+    @media(max-width:850px){.floating-wa{right:16px;bottom:16px;padding:11px 14px}}
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.btn,.project,.ig-card,.service,.step,.floating-wa{transition:none}.hero .reveal.visible,.hero .hero-card.visible,.contact .reveal.visible{animation:none}.btn-accent{animation:none}
+    }
+  </style>
+</head>
+<body>
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a class="logo" href="#home" aria-label="Rehan home">R.</a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#services">Services</a>
+        <a class="nav-cta" href="#contact">Let's Talk ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <div class="eyebrow">Videographer · Video Editor · Jamshedpur, India</div>
+          <h1>RE<span>H</span>AN</h1>
+          <p class="hero-copy">I turn raw footage into sharp, story-led visuals for reels, promotional content, cinematic edits and social media.</p>
+          <div class="hero-actions">
+            <a class="btn btn-accent" href="#work">View selected work ↘</a>
+            <a class="btn" href="https://wa.me/916202056664" target="_blank" rel="noopener">Start a project ↗</a>
+          </div>
+        </div>
+        <div class="hero-card reveal" aria-label="Rehan portrait">
+          <!-- Replace profile.jpg with your own image path -->
+          <img class="hero-photo" src="pic.jpeg" alt="Rehan portrait">
+          <div class="photo-shade" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">01 / Profile</div>
+            <h2 class="section-title">Built for<br>attention.</h2>
+          </div>
+          <p class="section-note">Clean cuts, purposeful pacing and strong visual rhythm — with every detail working toward the story.</p>
+        </div>
+        <div class="about-grid reveal">
+          <div class="eyebrow">Rehan · Editor & Videographer</div>
+          <div>
+            <p class="about-copy">I create <strong>engaging reels, promotional videos, cinematic visuals and social-first content</strong>, with a focus on clean editing, storytelling, color, sound and smooth transitions.</p>
+            <p class="about-small">I’m continuously learning and experimenting with new visual ideas, while keeping the final edit clear, modern and audience-focused.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">02 / Selected work</div>
+            <h2 class="section-title">Watch the<br>work.</h2>
+          </div>
+          <p class="section-note">Paste your Instagram Reel links below. Each Reel will appear on the site, and the Instagram embed remains linked to the original Reel.</p>
+        </div>
+
+        <div class="ig-grid">
+          <article class="ig-card reveal">
+            <div class="ig-card-head"><strong>Reel 01</strong><span>Short-form</span></div>
+            <div class="ig-embed" data-reel="https://www.instagram.com/reel/DeBC98jM41c/?stkn=OTZweGV4aWUyZGRu"></div>
+          </article>
+          <article class="ig-card reveal">
+            <div class="ig-card-head"><strong>Reel 02</strong><span>Brand</span></div>
+            <div class="ig-embed" data-reel="https://www.instagram.com/reel/DdnBtIly2B8/?stkn=dWg3cjM3aTU4Njk1"></div>
+          </article>
+          <article class="ig-card reveal">
+            <div class="ig-card-head"><strong>Reel 03</strong><span>Cinematic</span></div>
+            <div class="ig-embed" data-reel="https://www.instagram.com/reel/Dd7rebhzQ8l/?stkn=ejViY252OWZjOWhz"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">03 / Services</div>
+            <h2 class="section-title">What I<br>do.</h2>
+          </div>
+          <p class="section-note">A compact service offering that makes it immediately clear what a client can hire you for.</p>
+        </div>
+        <div class="services reveal">
+          <article class="service"><div class="service-num">01</div><h3>Video Editing</h3><p>From raw footage to a polished final cut with pacing, transitions, sound and color working together.</p></article>
+          <article class="service"><div class="service-num">02</div><h3>Reels & Shorts</h3><p>Vertical, social-first edits built around hooks, retention, rhythm and clean visual storytelling.</p></article>
+          <article class="service"><div class="service-num">03</div><h3>Promotional Content</h3><p>Short promotional videos that present products, services or brands with clarity and visual impact.</p></article>
+          <article class="service"><div class="service-num">04</div><h3>Color & Sound</h3><p>Finishing touches that make footage feel more cohesive, intentional and professional.</p></article>
+          <article class="service"><div class="service-num">05</div><h3>Cinematic Edits</h3><p>Story-driven sequences using atmosphere, music, pacing and visual composition to create a stronger mood.</p></article>
+          <article class="service"><div class="service-num">06</div><h3>Social Content</h3><p>Consistent visual content designed for modern social platforms and audience-first communication.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">04 / Process</div>
+            <h2 class="section-title">Simple.<br>Focused.</h2>
+          </div>
+          <p class="section-note">A clear workflow reduces back-and-forth and keeps the creative direction aligned from footage to final export.</p>
+        </div>
+        <div class="process reveal">
+          <div class="step"><div class="eyebrow">01</div><strong>Brief</strong><p>Understand the goal, audience, references and deliverables.</p></div>
+          <div class="step"><div class="eyebrow">02</div><strong>Build</strong><p>Shape the footage around the strongest story and pacing.</p></div>
+          <div class="step"><div class="eyebrow">03</div><strong>Refine</strong><p>Polish transitions, color, sound and the final visual rhythm.</p></div>
+          <div class="step"><div class="eyebrow">04</div><strong>Deliver</strong><p>Export clean, platform-ready files in the required format.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container reveal">
+        <div class="eyebrow">05 / Contact</div>
+        <h2>LET'S<br><span>CREATE.</span></h2>
+        <p>Have footage, an idea or a project in mind? Let’s turn it into something worth watching.</p>
+        <div class="contact-actions" id="contactActions"></div>
+      </div>
+    </section>
+  </main>
+
+  <a class="floating-wa" href="https://wa.me/916202056664" target="_blank" rel="noopener" aria-label="Chat with Rehan on WhatsApp">WhatsApp ↗</a>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 Rehan</span>
+      <span>Jamshedpur, India · Videographer & Video Editor</span>
+    </div>
+  </footer>
+
+  <script async src="https://www.instagram.com/embed.js"></script>
+  <script>
+    /*
+      EDIT ONLY THESE DETAILS.
+      Leave a value empty ("") if you do not want that button to appear.
+      WhatsApp: country code + number, without + or spaces.
+    */
+    const CONTACT = {
+      whatsapp: "916202056664",
+      email: "",
+      instagram: ""
+    };
+
+    const actions = document.getElementById("contactActions");
+    if (CONTACT.whatsapp) {
+      const a=document.createElement("a");
+      a.className="btn btn-accent"; a.target="_blank"; a.rel="noopener";
+      a.href="https://wa.me/"+CONTACT.whatsapp; a.textContent="WhatsApp ↗";
+      actions.appendChild(a);
+    }
+    if (CONTACT.email) {
+      const a=document.createElement("a");
+      a.className="btn"; a.href="mailto:"+CONTACT.email; a.textContent="Email ↗";
+      actions.appendChild(a);
+    }
+    if (CONTACT.instagram) {
+      const a=document.createElement("a");
+      a.className="btn"; a.target="_blank"; a.rel="noopener";
+      a.href=CONTACT.instagram; a.textContent="Instagram ↗";
+      actions.appendChild(a);
+    }
+    if (!actions.children.length) {
+      const a=document.createElement("a");
+      a.className="btn btn-accent"; a.href="#home"; a.textContent="Let's work together ↗";
+      actions.appendChild(a);
+    }
+
+    // Paste only your Instagram Reel URLs in the three data-reel attributes above.
+    function processInstagramEmbeds(){
+      if(window.instgrm?.Embeds?.process) window.instgrm.Embeds.process();
+    }
+    document.querySelectorAll(".ig-embed").forEach(box=>{
+      const url=box.dataset.reel || "";
+      if(!url || url.includes("PASTE_REEL_")){
+        box.innerHTML='<div class="ig-empty">Add your Instagram Reel link here.<code>data-reel="https://www.instagram.com/reel/…/"</code></div>';
+        return;
+      }
+      const quote=document.createElement("blockquote");
+      quote.className="instagram-media";
+      quote.setAttribute("data-instgrm-permalink",url);
+      quote.setAttribute("data-instgrm-version","14");
+      box.appendChild(quote);
+    });
+    window.addEventListener("load",processInstagramEmbeds);
+    setTimeout(processInstagramEmbeds,1200);
+
+    const nav=document.getElementById("nav");
+    window.addEventListener("scroll",()=>nav.classList.toggle("scrolled",window.scrollY>20),{passive:true});
+
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{if(entry.isIntersecting) entry.target.classList.add("visible")});
+    },{threshold:.12});
+    document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>
